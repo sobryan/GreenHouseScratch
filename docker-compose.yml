@@ -1,0 +1,19 @@
+version: '3'
+services:
+    rabbitmq:
+        container_name: myrabbitmq
+        restart: unless-stopped
+        ports:
+            - '5672:5672'
+            - '15672:15672'
+            - '1883:1883'
+            - '15675:15675'
+        image: 'rabbitmq:3'
+    node-red-docker:
+        environment:
+            - NODE_TLS_REJECT_UNAUTHORIZED=0
+        restart: unless-stopped
+        ports:
+            - '1880:1880'
+        container_name: mynodered
+        image: nodered/node-red-docker
