@@ -1,5 +1,5 @@
 # nodered - expose
-docker run -it -e NODE_TLS_REJECT_UNAUTHORIZED=0 --restart=unless-stopped -p 1880:1880 --name mynodered --add-host=myrabbitmq:172.17.0.1 nodered/node-red-docker
+docker run -itd -e NODE_TLS_REJECT_UNAUTHORIZED=0 --restart=unless-stopped -p 1880:1880 --name mynodered --add-host=myrabbitmq:172.17.0.1 nodered/node-red-docker
 # ignore node trust in container (if needed)
 docker exec -it mynodered /bin/bash
 npm config set strict-ssl false
@@ -8,7 +8,7 @@ npm config set strict-ssl false
 
 
 # rabbitmq - expose 4 ports 
-docker run -it --name myrabbitmq --restart=unless-stopped -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3
+docker run --name myrabbitmq --restart=unless-stopped -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3
 
 #start
 docker start -ai myrabbitmq
