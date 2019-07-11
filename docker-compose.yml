@@ -27,7 +27,7 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
-   depends_on:
+    depends_on:
       - elasticsearch
 
   kibana:
@@ -69,8 +69,6 @@ services:
       - elk
   node-red-docker:
     restart: unless-stopped
-    volumes:
-      - ./nodered/data:/data
     ports:
       - '1880:1880'
     container_name: mynodered
